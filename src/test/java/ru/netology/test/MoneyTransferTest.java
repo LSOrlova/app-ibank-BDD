@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.DataHelper;
 import ru.netology.page.LoginPage1;
+import ru.netology.page.LoginPage2;
+import ru.netology.page.LoginPage3;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -22,7 +24,25 @@ void shouldTransferMoneyBetweenOwnCardsV1() {
         var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         verificationPage.validVerify(verificationCode);
     }
-    @AfterEach
+
+    @Test
+    void shouldTransferMoneyBetweenOwnCardsV2() {
+        open("http://localhost:9999");
+        var loginPage = new LoginPage2();
+        var authInfo = DataHelper.getAuthInfo();
+        var verificationPage = loginPage.validLogin(authInfo);
+        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        verificationPage.validVerify(verificationCode);
+    }
+    @Test
+    void shouldTransferMoneyBetweenOwnCardsV3() {
+        var loginPage = open("http://localhost:9999", LoginPage3.class);
+        var authInfo = DataHelper.getAuthInfo();
+        var verificationPage = loginPage.validLogin(authInfo);
+        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        verificationPage.validVerify(verificationCode);
+    }
+        @AfterEach
     void tearDown() {
     }
 }
