@@ -23,10 +23,12 @@ public class DashboardPage {
         var text = cards.findBy(Condition.text(cardDetails.getNumber().substring(12, 16))).getText();
         return extractBalance(text);
     }
+
     public static TransferPage selectCardToTransfer(DataHelper.CardDetails cardDetails) {
-        cards.findBy(Condition.text(cardDetails.getNumber().substring(12,16))).$("button").click();
+        cards.findBy(Condition.text(cardDetails.getNumber().substring(12, 16))).$("button").click();
         return new TransferPage();
     }
+
     private static int extractBalance(String text) {
         var start = text.indexOf(balanceStart);
         var finish = text.indexOf(balanceFinish);

@@ -15,6 +15,7 @@ public class LoginPage3 {
     private SelenideElement passwordField;
     @FindBy(css = "[data-test-id=action-login]")
     private SelenideElement loginButton;
+
     public VerificationPage validLogin(DataHelper.AuthInfo info) {
         loginField.setValue(info.getLogin());
         passwordField.setValue(info.getPassword());

@@ -18,7 +18,8 @@ public class TransferPage {
     public TransferPage() {
         transferHead.shouldBe(visible);
     }
-public DashboardPage madeTransfer(int amountForTransfer, DataHelper.CardDetails cardDetails) {
+
+    public DashboardPage madeTransfer(int amountForTransfer, DataHelper.CardDetails cardDetails) {
         amount.setValue(String.valueOf(amountForTransfer));
         fromCard.setValue(cardDetails.getNumber());
         transferButton.click();
