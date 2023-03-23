@@ -19,17 +19,17 @@ public class DashboardPage {
         heading.shouldBe(visible);
     }
 
-    public static int getCardBalance(DataHelper.CardDetails cardDetails) {
+    public int getCardBalance(DataHelper.CardDetails cardDetails) {
         var text = cards.findBy(Condition.text(cardDetails.getNumber().substring(12, 16))).getText();
         return extractBalance(text);
     }
 
-    public static TransferPage selectCardToTransfer(DataHelper.CardDetails cardDetails) {
+    public TransferPage selectCardToTransfer(DataHelper.CardDetails cardDetails) {
         cards.findBy(Condition.text(cardDetails.getNumber().substring(12, 16))).$("button").click();
         return new TransferPage();
     }
 
-    private static int extractBalance(String text) {
+    private int extractBalance(String text) {
         var start = text.indexOf(balanceStart);
         var finish = text.indexOf(balanceFinish);
         var value = text.substring(start + balanceStart.length(), finish);
